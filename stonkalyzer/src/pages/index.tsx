@@ -1,14 +1,12 @@
-import styles from '@/styles/Home.module.css'
-import Head from 'next/head'
-import { Button } from '@/components/Button'
-import { useState } from 'react'
-import LineChart from '@/components/LineChart'
+import styles from "@/styles/Home.module.css";
+import Head from "next/head";
+import { Button } from "@/components/Button";
+import { useState } from "react";
+import LineChart from "@/components/LineChart";
 
-import { stock } from '@/util/api'
-
+import { stock } from "@/util/api";
 
 export default function Home() {
-
   //stock("AAPL");
 
   const UserData = [
@@ -68,10 +66,14 @@ export default function Home() {
       <main className={styles.main}>
         <div>
           <div className="text-white">Hello, world!</div>
-          <Button onclick={() => console.log("This button was clicked!")}/>
+          <Button
+            onclick={() => {
+              console.log("This button was clicked!");
+            }}
+          />
           <LineChart chartData={userData} />
         </div>
       </main>
     </>
-  )
+  );
 }
