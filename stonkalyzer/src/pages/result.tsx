@@ -3,7 +3,7 @@ import { TypeAnimation } from 'react-type-animation';
 import Loading from '@/components/Loading';
 
 
-const result = () => {
+const Result = () => {
 
     const [loaded, setLoaded] = useState(false);
 
@@ -57,4 +57,4 @@ const result = () => {
     );
 }
 
-export default result;
+export default Result;
