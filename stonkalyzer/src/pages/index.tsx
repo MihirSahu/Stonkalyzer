@@ -42,7 +42,7 @@ export default function Home() {
     },
   ];
 
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState({ //user data is obj, setUserData is function, hooks will change and rerender for you
     labels: UserData.map((data) => data.year),
     datasets: [
       {
@@ -71,7 +71,7 @@ export default function Home() {
               console.log("This button was clicked!");
             }}
           />
-          <LineChart chartData={userData} />
+          <LineChart chartData=UserData />
         </div>
       </main>
     </>
