@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 
 const ShortQuestion = (props: {
   question?: string;
@@ -136,16 +137,7 @@ const Form = () => {
         margin: 10,
       }}
     >
-      <h1
-        style={{
-          fontFamily: "monospace",
-          fontSize: 50,
-          color: "#CFCFCF",
-          fontWeight: "bold",
-        }}
-      >
-        stonkalyzer
-      </h1>
+      <img src="/Stonkalyzer.png" />
       <br />
       <div className="overflow-y-auto text-left text-[#cfcfcf]">
         {getQuestions()}
