@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex flex-row justify-start mt-8 mx-6">
+      <header className="flex flex-row justify-start mx-6 md:hidden">
         <div className="flex justify-center self-start absolute top-6 left-8">
           <button onClick={() => setNavActive(!navActive)}>
             <Image

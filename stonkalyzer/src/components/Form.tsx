@@ -10,7 +10,7 @@ const ShortQuestion = (props: {
     <>
       <span>{props.question || "What is your favorite color?"}</span>
       <input
-        placeholder={props.placeholder || "Red"}
+        placeholder={props.placeholder || ""}
         style={{
           display: "block",
           borderRadius: 6,
@@ -32,20 +32,61 @@ const ShortQuestion = (props: {
   );
 };
 
+const MCQuestion = (props: {
+  question?: string;
+  options?: string[];
+  qid: number;
+  onChange: (str: string, index: number) => void;
+}) => {
+  const getRadios = () => {
+    const arr: JSX.Element[] = [];
+    props.options?.forEach((o) => {
+      arr.push(
+        <p>
+          <input type="radio" name={`${props.qid}`} />
+          {` ${o}`}
+        </p>
+      );
+    });
+    return arr;
+  };
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <span>{props.question || "What is your favorite color?"}</span>
+      <br />
+      {getRadios()}
+    </div>
+  );
+};
+
 const Form = () => {
   type questioninfo = {
     question?: string;
     placeholder?: string;
+    qType: "SHORT" | "RADIO";
+    options?: string[];
   };
 
   const questionInfo: questioninfo[] = [
     {
-      question: "What's your favorite idea?",
-      placeholder: "Mine is being creative",
+      qType: "RADIO",
+      question: "Are you investing for income or growth?",
+      options: ["Income", "Growth"],
     },
     {
-      question: "How do you get the idea?",
-      placeholder: "I just start to think creatively",
+      qType: "RADIO",
+      question: "How accessible do you want your investments to be?",
+      options: ["Option A", "Option B"],
+    },
+    {
+      qType: "RADIO",
+      question: "How much do you expect to gain from your investments?",
+      options: ["Option A", "Option B"],
+    },
+    {
+      qType: "RADIO",
+      question: "How muchtime do you want your money to be invested for?",
+      options: ["Option A", "Option B"],
     },
   ];
 
@@ -59,12 +100,15 @@ const Form = () => {
     const questionComponents: JSX.Element[] = [];
     for (let i = 0; i < questionInfo.length; i++) {
       const curQuestionInfo = questionInfo[i];
+      const CurQuestion =
+        curQuestionInfo.qType === "SHORT" ? ShortQuestion : MCQuestion;
       questionComponents.push(
-        <ShortQuestion
+        <CurQuestion
           key={i}
           question={curQuestionInfo.question}
           placeholder={curQuestionInfo.placeholder}
           qid={i}
+          options={curQuestionInfo.options}
           onChange={(str, i) => {
             formData[i] = str;
             setFormData(formData);
@@ -89,6 +133,7 @@ const Form = () => {
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
+        margin: 10,
       }}
     >
       <h1
