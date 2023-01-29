@@ -1,7 +1,6 @@
 import styles from "@/styles/Home.module.css";
 import Head from "next/head";
 import { Button } from "@/components/Button";
-import { useState } from "react";
 import LineChart from "@/components/LineChart";
 
 import { stock } from "@/util/api";
@@ -42,25 +41,6 @@ export default function Home() {
     },
   ];
 
-  const [userData, setUserData] = useState({ //user data is obj, setUserData is function, hooks will change and rerender for you
-    labels: UserData.map((data) => data.year),
-    datasets: [
-      {
-        label: "Users Gained",
-        data: UserData.map((data) => data.userGain),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-        borderColor: "white",
-        borderWidth: 2,
-      },
-    ],
-  });
-
   return (
     <>
       <main className={styles.main}>
@@ -71,7 +51,7 @@ export default function Home() {
               console.log("This button was clicked!");
             }}
           />
-          <LineChart chartData=UserData />
+          <LineChart coordinates={UserData.map(e => ({xData:e.year, yData:e.userGain})) } xlabel={"Users Gained"} />
         </div>
       </main>
     </>
