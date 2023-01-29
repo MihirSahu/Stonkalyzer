@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Image from "next/image";
+import Link from "next/link";
+
 
 const ShortQuestion = (props: {
   question?: string;
@@ -164,7 +165,7 @@ const Form = () => {
       <div className="w-full overflow-y-auto text-left text-[#cfcfcf]">
         {getQuestions()}
       </div>
-      <button className="mt-4 px-4 py-2 text-white hover:bg-stonkYellow hover:text-stonkBlack">Analyze!</button>
+      <Link legacyBehavior href="/result"><a className="mt-4 px-4 py-2 text-white hover:bg-stonkYellow hover:text-stonkBlack">Analyze!</a></Link>
     </div>
   );
 };
