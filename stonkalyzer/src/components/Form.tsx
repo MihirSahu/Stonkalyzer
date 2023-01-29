@@ -71,23 +71,42 @@ const Form = () => {
   const questionInfo: questioninfo[] = [
     {
       qType: "RADIO",
+      question: "How old are you?",
+      options: ["I'm less than 40 years old", "I'm older than 40"],
+    },
+    {
+      qType: "RADIO",
       question: "Are you investing for income or growth?",
-      options: ["Income", "Growth"],
+      options: ["I'm investing for income", "I'm investing for growth"],
     },
     {
       qType: "RADIO",
       question: "How accessible do you want your investments to be?",
-      options: ["Option A", "Option B"],
+      options: ["I need to liquidate my investments frequently", "I don't need to liquidate my funds anytime soon"],
     },
     {
       qType: "RADIO",
       question: "How much do you expect to gain from your investments?",
-      options: ["Option A", "Option B"],
+      options: ["I want a stable steam of income from my investments", "I don't care much about a steady income"],
     },
     {
       qType: "RADIO",
       question: "How muchtime do you want your money to be invested for?",
-      options: ["Option A", "Option B"],
+      options: ["I'm investing for the short term", "I'm investing for the long term"],
+    },
+    {
+      qType: "RADIO",
+      question: "Do you want to invest in a stock, bond, or cash instrument?",
+      options: ["Stock", "Bond", "Cash Instrument"],
+    },
+    {
+      qType: "RADIO",
+      question: "Do you want to invest in a stock, bond, or cash instrument?",
+      options: ["Stock", "Bond", "Cash Instrument"],
+    },
+    {
+      qType: "SHORT",
+      question: "If you want to invest in a stock, what's the stock symbol?",
     },
   ];
 
@@ -125,7 +144,7 @@ const Form = () => {
     <div
       style={{
         height: 700,
-        width: 500,
+        width: 800,
         backgroundColor: "#343434",
         padding: 20,
         borderRadius: 10,
@@ -135,13 +154,17 @@ const Form = () => {
         display: "flex",
         flexDirection: "column",
         margin: 10,
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center",
       }}
     >
-      <img src="/Stonkalyzer.png" />
+      <img src="/Stonkalyzer.png" width="300px" />
       <br />
-      <div className="overflow-y-auto text-left text-[#cfcfcf]">
+      <div className="w-full overflow-y-auto text-left text-[#cfcfcf]">
         {getQuestions()}
       </div>
+      <button className="mt-4 px-4 py-2 text-white hover:bg-stonkYellow hover:text-stonkBlack">Analyze!</button>
     </div>
   );
 };
